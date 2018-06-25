@@ -12,117 +12,115 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.SwingUtilities;
 
-
 public class MDIAppExample extends JFrame implements ActionListener {
 
-	private static final long serialVersionUID = 1L;
-	
-	private JDesktopPane desktopPane;
-	private JMenuBar menuBarre;
-	private JMenu menuAgenda;
-	private InternalFrame1 frm1;
+    private static final long serialVersionUID = 1L;
 
+    private JDesktopPane desktopPane;
+    private JMenuBar menuBarre;
+    private JMenu menuAgenda;
+    private InternalFrame1 frm1;
 
-	public MDIAppExample() {
+    public MDIAppExample() {
 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		setBounds(0, 0, screenSize.width, screenSize.height);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds(0, 0, screenSize.width, screenSize.height);
 
-		// initialiser l'ecran MDI
-		desktopPane = new JDesktopPane();
+        // initialiser l'ecran MDI
+        desktopPane = new JDesktopPane();
 
-		// Associer le JDesktopPane à la JFrame
-		setContentPane(desktopPane);
+        // Associer le JDesktopPane à la JFrame
+        setContentPane(desktopPane);
 
-		// Barre de menus
-		setJMenuBar(getMenuBarre());
-		
-		//Frame interne exemple		
-		desktopPane.add(getFrm1());
+        // Barre de menus
+        setJMenuBar(getMenuBarre());
 
-	}
+        //Frame interne exemple		
+        desktopPane.add(getFrm1());
 
-	// Lancement de l'application
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
+    }
 
-			@Override
-			public void run() {
-				MDIAppExample ecran = new MDIAppExample();
-				ecran.setVisible(true);
-			}
-		});
+    // Lancement de l'application
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
 
-	}
+            @Override
+            public void run() {
+                MDIAppExample ecran = new MDIAppExample();
+                ecran.setVisible(true);
+            }
+        });
 
-	public void createMenuBar() {
+    }
 
-		// Menu Fichier
-		JMenu menu = new JMenu("Fichier");
-		menuBarre.add(menu);
+    public void createMenuBar() {
 
-		// Sous menu Déconnexion
-		JMenuItem menuItem = new JMenuItem("Déconnexion");
-		menuItem.setActionCommand("deconnexion");
-		menuItem.addActionListener(this);
-		menu.add(menuItem);
+        // Menu Fichier
+        JMenu menu = new JMenu("Fichier");
+        menuBarre.add(menu);
 
-		// Sous menu fermer
-		menuItem = new JMenuItem("Fermer");
-		menuItem.setActionCommand("fermer");
-		menuItem.addActionListener(this);
-		menu.add(menuItem);
+        // Sous menu Déconnexion
+        JMenuItem menuItem = new JMenuItem("Déconnexion");
+        menuItem.setActionCommand("deconnexion");
+        menuItem.addActionListener(this);
+        menu.add(menuItem);
 
-		// Menu Agenda
-		menuItem = new JMenuItem("Ecran");
-		menuBarre.add(menuItem);		
-		menuItem.setActionCommand("ecran");
-		menuItem.addActionListener(this);
+        // Sous menu fermer
+        menuItem = new JMenuItem("Fermer");
+        menuItem.setActionCommand("fermer");
+        menuItem.addActionListener(this);
+        menu.add(menuItem);
 
-	}
+        // Menu Agenda
+        menuItem = new JMenuItem("Ecran");
+        menuBarre.add(menuItem);
+        menuItem.setActionCommand("ecran");
+        menuItem.addActionListener(this);
 
-	// Réagir aux clicks sur les menus
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		switch (e.getActionCommand()) {
-		case "deconnexion":
-			System.out.println("Deconnexion");
-			break;
-		case "fermer":
-			System.exit(0);
-			break;
+    }
 
-		case "ecran":
-			System.out.println("coucou");
-			getFrm1().setVisible(true);
-			break;
+    // Réagir aux clicks sur les menus
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        switch (e.getActionCommand()) {
+            case "deconnexion":
+                System.out.println("Deconnexion");
+                break;
+            case "fermer":
+                System.exit(0);
+                break;
 
-		default:
-			System.out.println("Probleme e=" + e);
-		}
+            case "ecran":
+                System.out.println("coucou");
+                getFrm1().setVisible(true);
+                break;
 
-	}
+            default:
+                System.out.println("Probleme e=" + e);
+        }
 
-	public JDesktopPane getDesktopPane() {
-		return desktopPane;
-	}
+    }
 
-	public JMenuBar getMenuBarre() {
-		if (menuBarre == null) {
-			menuBarre = new JMenuBar();
+    public JDesktopPane getDesktopPane() {
+        return desktopPane;
+    }
 
-			createMenuBar();
-		}
-		return menuBarre;
-	}
+    public JMenuBar getMenuBarre() {
+        if (menuBarre == null) {
+            menuBarre = new JMenuBar();
 
-	public InternalFrame1 getFrm1() {
-		if(frm1== null){
-			frm1 = new InternalFrame1();
-		}
-		return frm1;
-	}
+            createMenuBar();
+        }
+        return menuBarre;
+    }
+
+    public InternalFrame1 getFrm1() {
+        if (frm1 == null) {
+            frm1 = new InternalFrame1();
+        }
+        return frm1;
+    }
 
 }
