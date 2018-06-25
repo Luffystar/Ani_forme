@@ -186,5 +186,4 @@ public class PersonnelDAO implements IPersonnelDAO {
 
         return result;
     }
-
 }

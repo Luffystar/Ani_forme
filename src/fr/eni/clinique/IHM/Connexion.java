@@ -1,4 +1,4 @@
-package fr.eni.clinique.ihm;
+package fr.eni.clinique.IHM;
 
 import java.awt.BorderLayout;
 import java.awt.GraphicsConfiguration;

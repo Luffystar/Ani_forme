@@ -1,4 +1,4 @@
-package fr.eni.clinique.ihm;
+package fr.eni.clinique.IHM;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -29,7 +29,7 @@ public class MDIAppExample extends JFrame implements ActionListener {
 
 
 	public MDIAppExample() {
-		this.setTitle("Clinique Vétérinaire");
+		this.setTitle("Clinique Vï¿½tï¿½rinaire");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		setBounds(0, 0, screenSize.width, screenSize.height);

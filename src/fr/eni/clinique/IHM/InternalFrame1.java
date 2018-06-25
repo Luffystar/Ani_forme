@@ -1,4 +1,4 @@
-package fr.eni.clinique.ihm;
+package fr.eni.clinique.IHM;
 
 import javax.swing.JInternalFrame;
 
