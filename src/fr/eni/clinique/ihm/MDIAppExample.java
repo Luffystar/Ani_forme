@@ -13,6 +13,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.SwingUtilities;
 
+import fr.eni.clinique.ihm.login.Connexion;
+
 public class MDIAppExample extends JFrame implements ActionListener {
 
    
