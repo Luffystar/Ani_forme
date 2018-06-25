@@ -1,5 +1,5 @@
 package fr.eni.clinique.BO;
 
-public class Agenda {
+public class Rdv {
     
 }

@@ -1,5 +1,6 @@
 package fr.eni.clinique.APP;
 
+import fr.eni.clinique.BO.Utilisateur;
 import java.util.List;
 
 import fr.eni.clinique.DAL.DAOFactory;
@@ -11,7 +12,7 @@ public class AppliTestDAL {
 
         //Déclaration et instanciation de la DAO
         IPersonnelDAO personnelDAO = DAOFactory.getPersonnelDAO();
-
+        //personnelDAO.create(new Utilisateur());
     }
 
 }
