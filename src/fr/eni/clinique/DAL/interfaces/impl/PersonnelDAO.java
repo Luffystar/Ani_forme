@@ -61,18 +61,130 @@ public class PersonnelDAO implements IPersonnelDAO {
     }
 
     @Override
-    public Utilisateur read(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Utilisateur read(int id) throws DALException {
+
+        Utilisateur result = null;
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("SELECT * FROM Personnels WHERE ")
+                .append("CodePers = ?");
+
+        try (PreparedStatement statement = jdbcTools.getConnection().prepareStatement(sb.toString());) {
+
+            statement.setInt(1, id);
+
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+
+                result = new Utilisateur(
+                        rs.getInt("CodePers"),
+                        rs.getString("Nom"),
+                        rs.getString("MotPasse"),
+                        rs.getString("Role"),
+                        rs.getBoolean("Archive")
+                );
+            }
+
+        } catch (SQLException ex) {
+            throw new DALException(ex.getMessage());
+
+        } finally {
+
+            try {
+                jdbcTools.closeConnection();
+            } catch (SQLException ex) {
+                Logger.getLogger(PersonnelDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        return result;
     }
 
     @Override
-    public int update(Utilisateur data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int update(Utilisateur utilisateur) throws DALException {
+        try (Statement statement = jdbcTools.getConnection().createStatement();) {
+
+            StringBuilder sb = new StringBuilder();
+            sb.append("UPDATE Personnels SET ");
+            String virgule = " ";
+
+            if (utilisateur.getNom() != null) {
+                sb.append(virgule)
+                        .append("Nom = '")
+                        .append(utilisateur.getNom())
+                        .append("' ");
+                virgule = ", ";
+            }
+            if (utilisateur.getMotPasse()!= null) {
+                sb.append(virgule)
+                        .append("MotPasse = '")
+                        .append(utilisateur.getMotPasse())
+                        .append("' ");
+                virgule = ", ";
+            }
+            if (utilisateur.getRole() != null) {
+                sb.append(virgule)
+                        .append("Role = '")
+                        .append(utilisateur.getRole())
+                        .append("' ");
+                virgule = ", ";
+            }
+            if (utilisateur.getArchive() != null) {
+                sb.append(virgule)
+                        .append("Archive = '")
+                        .append(utilisateur.getArchive())
+                        .append("' ");
+            }
+
+            sb.append("WHERE CodePers = ").append(utilisateur.getCodePers());
+
+            System.out.println(sb.toString());
+            
+            statement.executeUpdate(sb.toString());
+
+        } catch (SQLException ex) {
+            throw new DALException(ex.getMessage());
+
+        } finally {
+
+            try {
+                jdbcTools.closeConnection();
+            } catch (SQLException ex) {
+                Logger.getLogger(PersonnelDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        return 0;
     }
 
     @Override
-    public int delete(Utilisateur data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int delete(Utilisateur utilisateur) throws DALException {
+        int result = -1;
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("DELETE FROM Personnels WHERE ")
+                .append("CodePers = ?");
+
+        try (PreparedStatement statement = jdbcTools.getConnection().prepareStatement(sb.toString());) {
+
+            statement.setInt(1, utilisateur.getCodePers());
+
+            result = statement.executeUpdate();
+
+        } catch (SQLException ex) {
+            throw new DALException(ex.getMessage());
+
+        } finally {
+
+            try {
+                jdbcTools.closeConnection();
+            } catch (SQLException ex) {
+                Logger.getLogger(PersonnelDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        return result;
     }
 
 }
