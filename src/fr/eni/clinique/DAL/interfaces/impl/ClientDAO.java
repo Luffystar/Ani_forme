@@ -70,17 +70,17 @@ public class ClientDAO implements IClientDAO {
     }
 
     @Override
-    public Utilisateur read(int id) {
+    public Client read(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public int update(Utilisateur data) {
+    public int update(Client data) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public int delete(Utilisateur data) {
+    public int delete(Client data) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
