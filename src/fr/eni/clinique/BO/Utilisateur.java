@@ -7,10 +7,17 @@ public class Utilisateur {
     private String Nom;
     private String MotPasse;
     private String Role;
-    private String Archive;
+    private Boolean Archive;
 
     //Constructeurs
-    public Utilisateur(int CodePers, String Nom, String MotPasse, String Role, String Archive) {
+    public Utilisateur(String Nom, String MotPasse, String Role, Boolean Archive) {
+        this.Nom = Nom;
+        this.MotPasse = MotPasse;
+        this.Role = Role;
+        this.Archive = Archive;
+    }
+    
+    public Utilisateur(int CodePers, String Nom, String MotPasse, String Role, Boolean Archive) {
         this.CodePers = CodePers;
         this.Nom = Nom;
         this.MotPasse = MotPasse;
@@ -37,7 +44,7 @@ public class Utilisateur {
         return Role;
     }
 
-    public String getArchive() {
+    public Boolean getArchive() {
         return Archive;
     }
 
@@ -58,7 +65,7 @@ public class Utilisateur {
         this.Role = Role;
     }
 
-    public void setArchive(String Archive) {
+    public void setArchive(Boolean Archive) {
         this.Archive = Archive;
     }
 

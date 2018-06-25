@@ -1,14 +1,14 @@
 package fr.eni.clinique.DAL;
 
+import fr.eni.clinique.DAL.interfaces.impl.ClientDAO;
 import fr.eni.clinique.DAL.interfaces.impl.PersonnelDAO;
 
 public class DAOFactory {
 
-    // Constante
     // Attributs
     private static PersonnelDAO personnelDAO;
+    private static ClientDAO clientDAO;
 
-    // Constructor
     // Methode
     public static PersonnelDAO getPersonnelDAO() {
         if (personnelDAO == null) {
@@ -16,7 +16,11 @@ public class DAOFactory {
         }
         return personnelDAO;
     }
-
-    // Get
-    // Set
+    
+    public static ClientDAO getClientDAO() {
+        if (clientDAO == null) {
+            clientDAO = new ClientDAO();
+        }
+        return clientDAO;
+    }
 }
