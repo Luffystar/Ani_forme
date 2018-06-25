@@ -1,19 +1,21 @@
 package fr.eni.clinique.DAL;
 
+import fr.eni.clinique.DAL.interfaces.impl.PersonnelDAO;
+
 public class DAOFactory {
 
     // Constante
     // Attributs
-    //private static ArticleDAO articleDAO;
+    private static PersonnelDAO personnelDAO;
 
     // Constructor
     // Methode
-    /*public static ArticleDAO getArticleDAO() {
-        if (articleDAO == null) {
-            articleDAO = new ArticleDAO();
+    public static PersonnelDAO getPersonnelDAO() {
+        if (personnelDAO == null) {
+            personnelDAO = new PersonnelDAO();
         }
-        return articleDAO;
-    }*/
+        return personnelDAO;
+    }
 
     // Get
     // Set
