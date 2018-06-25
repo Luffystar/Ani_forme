@@ -14,6 +14,7 @@ import javax.swing.SwingUtilities;
 
 public class MDIAppExample extends JFrame implements ActionListener {
 
+<<<<<<< HEAD
     private static final long serialVersionUID = 1L;
 
     private JDesktopPane desktopPane;
