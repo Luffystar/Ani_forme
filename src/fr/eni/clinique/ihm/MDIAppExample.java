@@ -52,7 +52,7 @@ public class MDIAppExample extends JFrame implements ActionListener {
 
 	// Lancement de l'application
 	public static void main(String[] args) throws Exception {
-		Connexion main = new Connexion();
+	//	Connexion main = new Connexion();
 		
 			SwingUtilities.invokeLater(new Runnable() {
 
@@ -61,6 +61,13 @@ public class MDIAppExample extends JFrame implements ActionListener {
 					
 					MDIAppExample ecran = new MDIAppExample();
 					ecran.setVisible(true);
+
+					try {
+						Connexion main = new Connexion();
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 			});
 		
