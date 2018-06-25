@@ -27,9 +27,6 @@ public class MDIAppExample extends JFrame implements ActionListener {
 
 	private static boolean connexionok = false;
 	private InternalFrame1 frm1;
-	private InternalFrame1 frm2;
-	private InternalFrame1 frm3;
-	private InternalFrame1 frm4;
 
 
 	public MDIAppExample() {
@@ -50,9 +47,6 @@ public class MDIAppExample extends JFrame implements ActionListener {
 		//Frame interne exemple		
 		desktopPane.add(getFrm());
 		desktopPane.add(getFrm1());
-		desktopPane.add(getFrm2());
-		desktopPane.add(getFrm3());
-		desktopPane.add(getFrm4());
 
 	}
 
@@ -90,36 +84,11 @@ public class MDIAppExample extends JFrame implements ActionListener {
 		menuItem.addActionListener(this);
 		menu.add(menuItem);
 
-		// Menu Gestion des rendez-vous
-		JMenu menurdv = new JMenu("Gestion des rendez-vous");
-		menuBarre.add(menurdv);
-		
-		// Sous menu Prise de rendez vous
-		menuItem = new JMenuItem("Prise de rendez vous");
-		menuItem.setActionCommand("Prisederendez-vous");
-		menuItem.addActionListener(this);
-		menurdv.add(menuItem);
-		
-		// Sous menu Prise de rendez vous
-		menuItem = new JMenuItem("Gestion des clients");
-		menuItem.setActionCommand("Gestiondesclients");
-		menuItem.addActionListener(this);
-		menurdv.add(menuItem);
-		
-		
 		// Menu Agenda
-		menuItem = new JMenuItem("Agenda");
+		menuItem = new JMenuItem("Ecran");
 		menuBarre.add(menuItem);		
 		menuItem.setActionCommand("ecran");
 		menuItem.addActionListener(this);
-		
-		// Menu Gestion du personnel
-		menuItem = new JMenuItem("Gestion du personnel");
-		menuBarre.add(menuItem);		
-		menuItem.setActionCommand("Gestiondupersonnel");
-		menuItem.addActionListener(this);
-		
-		
 
 	}
 
@@ -133,21 +102,10 @@ public class MDIAppExample extends JFrame implements ActionListener {
 		case "fermer":
 			System.exit(0);
 			break;
+
 		case "ecran":
 			System.out.println("coucou");
 			getFrm1().setVisible(true);
-			break;
-		case "Prisederendez-vous":
-			System.out.println("Vous avez pris rendez-vous?");
-			getFrm2().setVisible(true);
-			break;
-		case "Gestiondesclients":
-			System.out.println("Clients");
-			getFrm3().setVisible(true);
-			break;
-		case "Gestiondupersonnel":
-			System.out.println("Gestion admin");
-			getFrm4().setVisible(true);
 			break;
 
 		default:
@@ -180,29 +138,8 @@ public class MDIAppExample extends JFrame implements ActionListener {
 	public InternalFrame1 getFrm1() {
 		if(frm1== null){
 			frm1 = new InternalFrame1();
-			frm1.setTitle("Agenda");
 		}
 		return frm1;
 	}
-	public InternalFrame1 getFrm2() {
-		if(frm2== null){
-			frm2 = new InternalFrame1();
-			frm2.setTitle("Prise de rendez-vous");
-		}
-		return frm2;
-	}
-	public InternalFrame1 getFrm3() {
-		if(frm3== null){
-			frm3 = new InternalFrame1();
-			frm3.setTitle("Gestion des clients");
-		}
-		return frm3;
-	}
-	public InternalFrame1 getFrm4() {
-		if(frm4== null){
-			frm4 = new InternalFrame1();
-			frm4.setTitle("Gestion du personnel");
-		}
-		return frm4;
-	}
+
 }
