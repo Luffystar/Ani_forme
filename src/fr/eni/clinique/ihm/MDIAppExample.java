@@ -2,6 +2,7 @@ package fr.eni.clinique.ihm;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,20 +14,24 @@ import javax.swing.JMenuItem;
 import javax.swing.SwingUtilities;
 
 
+
 public class MDIAppExample extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	
+	private Window Con;
 	private JDesktopPane desktopPane;
 	private JMenuBar menuBarre;
 	private JMenu menuAgenda;
+	private static InternalFrame1 frm;
+
+	private static boolean connexionok = false;
 	private InternalFrame1 frm1;
 
 
 	public MDIAppExample() {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		setBounds(0, 0, screenSize.width, screenSize.height);
 
@@ -40,20 +45,25 @@ public class MDIAppExample extends JFrame implements ActionListener {
 		setJMenuBar(getMenuBarre());
 		
 		//Frame interne exemple		
+		desktopPane.add(getFrm());
 		desktopPane.add(getFrm1());
 
 	}
 
 	// Lancement de l'application
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
+	public static void main(String[] args) throws Exception {
+		Connexion main = new Connexion();
+		
+			SwingUtilities.invokeLater(new Runnable() {
 
-			@Override
-			public void run() {
-				MDIAppExample ecran = new MDIAppExample();
-				ecran.setVisible(true);
-			}
-		});
+				@Override
+				public void run() {
+					
+					MDIAppExample ecran = new MDIAppExample();
+					ecran.setVisible(true);
+				}
+			});
+		
 
 	}
 
@@ -118,6 +128,14 @@ public class MDIAppExample extends JFrame implements ActionListener {
 		return menuBarre;
 	}
 
+	public static InternalFrame1 getFrm() {
+		if(frm== null){
+			frm = new InternalFrame1();
+			frm.setTitle("Connexion");
+		}
+		return frm;
+	}
+	
 	public InternalFrame1 getFrm1() {
 		if(frm1== null){
 			frm1 = new InternalFrame1();
