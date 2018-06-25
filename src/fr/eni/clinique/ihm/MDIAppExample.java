@@ -53,6 +53,7 @@ public class MDIAppExample extends JFrame implements ActionListener {
 	// Lancement de l'application
 	public static void main(String[] args) throws Exception {
 		Connexion main = new Connexion();
+		
 			SwingUtilities.invokeLater(new Runnable() {
 
 				@Override
