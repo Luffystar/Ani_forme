@@ -7,9 +7,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,9 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import fr.eni.clinique.BO.Utilisateur;
-
-public class Connexion extends JFrame implements ActionListener {
+public class Connexion extends JFrame {
 	
 	JLabel noml = new JLabel("Nom");
 	JLabel mdpl = new JLabel("Mot de passe");
@@ -29,18 +25,18 @@ public class Connexion extends JFrame implements ActionListener {
 
 	JButton connex = new JButton("Valider");
 	
-	public Connexion() throws Exception {
+	public Connexion() throws HeadlessException {
 		super();
 		this.setSize(300, 300);
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		initIHM();   
-		connex.addActionListener((ActionListener) this);
+		//connex.addActionListener((ActionListener) connex);
 		// TODO Auto-generated constructor stub
 	}
 
-	private void initIHM() throws Exception {
+	private void initIHM() {
 		// TODO Auto-generated method stub
 		JPanel panel = new JPanel();
 		panel.setOpaque(true);
@@ -65,21 +61,6 @@ public class Connexion extends JFrame implements ActionListener {
 
 		this.add(panel, BorderLayout.CENTER);
 		
-	}
-	public void actionPerformed(ActionEvent a){
-		try{
-			//for (int i = 1; i = Utilisateur.tableau.lenght(); i++){
-				System.out.println("Bouton cliqué");
-				// ---------------- A Modifier
-				// Ici on vérifie que l'Utilisateur existe
-				// et que le mot de passe correspond à l'utilisateur
-				
-				//Connecté = fermeture de Connexion
-				this.setVisible(false);
-			//}
-		} catch (Exception e) {
-			System.err.println(e.getMessage());
-		}
 	}
 
 	public JLabel getNoml() {
