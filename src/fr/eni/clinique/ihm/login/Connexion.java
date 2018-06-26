@@ -13,8 +13,6 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-import fr.eni.clinique.IHM.MDIAppExample;
-
 
 public class Connexion extends JFrame {
 
@@ -24,8 +22,8 @@ public class Connexion extends JFrame {
     public Connexion() throws HeadlessException {
         super();
         setAlwaysOnTop(true);
-        setResizable(false);
-        setTitle("Connexion");
+        this.setResizable(false);
+        this.setTitle("Connexion");
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,7 +44,7 @@ public class Connexion extends JFrame {
             public void mouseClicked(MouseEvent arg0) {
             	//Ici on test la connection
             	try {
-            		//Ici on vérifie si : 
+            		//Ici on vï¿½rifie si : 
             		//	-le nom Existe (et le fait que ce ne soit pas vide)
             		//	-et le mot de passe correspondant au nom de l'utilisateur
             		
