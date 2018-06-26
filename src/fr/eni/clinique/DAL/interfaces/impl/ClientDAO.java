@@ -1,10 +1,8 @@
 package fr.eni.clinique.DAL.interfaces.impl;
 
 import fr.eni.clinique.BO.Client;
-import fr.eni.clinique.BO.Utilisateur;
 import fr.eni.clinique.DAL.exceptions.DALException;
 import fr.eni.clinique.DAL.interfaces.IClientDAO;
-import fr.eni.clinique.DAL.interfaces.IPersonnelDAO;
 import fr.eni.clinique.DAL.utils.JdbcTools;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
