@@ -53,8 +53,6 @@ public class Connexion extends JFrame {
             		// Si c'est ok : 
             		
                     setVisible(false);
-                	MDIAppExample mm = new MDIAppExample();
-                	mm.setVisible(true);
                 	
                 	//sinon on affiche une erreur et on recommence.
             	} catch(Exception e){
