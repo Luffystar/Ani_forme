@@ -100,24 +100,5 @@ public class Connexion extends JFrame {
         );
         getContentPane().setLayout(groupLayout);
         this.setSize(300, 300);
-        //initIHM();   
-        //connex.addActionListener((ActionListener) connex);
-        // TODO Auto-generated constructor stub
-    }
-
-    private void initIHM() {
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(2, 2, 2, 2);
-
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.gridx = 1;
-
-        gbc.gridy = 1;
-        gbc.gridx = 0;
-        gbc.gridx = 1;
-
-        gbc.gridx = 2;
-
     }
 }
