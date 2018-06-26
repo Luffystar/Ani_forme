@@ -6,7 +6,6 @@ import fr.eni.clinique.DAL.interfaces.IPersonnelDAO;
 import fr.eni.clinique.DAL.utils.JdbcTools;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -48,14 +47,14 @@ public class PersonnelDAO implements IPersonnelDAO {
                 }
             }
 
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             throw new DALException(ex.getMessage());
 
         } finally {
 
             try {
                 jdbcTools.closeConnection();
-            } catch (SQLException ex) {
+            } catch (Exception ex) {
                 Logger.getLogger(PersonnelDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -89,14 +88,14 @@ public class PersonnelDAO implements IPersonnelDAO {
                 );
             }
 
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             throw new DALException(ex.getMessage());
 
         } finally {
 
             try {
                 jdbcTools.closeConnection();
-            } catch (SQLException ex) {
+            } catch (Exception ex) {
                 Logger.getLogger(PersonnelDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -146,14 +145,14 @@ public class PersonnelDAO implements IPersonnelDAO {
             
             statement.executeUpdate(sb.toString());
 
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             throw new DALException(ex.getMessage());
 
         } finally {
 
             try {
                 jdbcTools.closeConnection();
-            } catch (SQLException ex) {
+            } catch (Exception ex) {
                 Logger.getLogger(PersonnelDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -175,14 +174,14 @@ public class PersonnelDAO implements IPersonnelDAO {
 
             result = statement.executeUpdate();
 
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             throw new DALException(ex.getMessage());
 
         } finally {
 
             try {
                 jdbcTools.closeConnection();
-            } catch (SQLException ex) {
+            } catch (Exception ex) {
                 Logger.getLogger(PersonnelDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
