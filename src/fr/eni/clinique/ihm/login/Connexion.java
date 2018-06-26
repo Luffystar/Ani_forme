@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import fr.eni.clinique.IHM.MDIAppExample;
+
 
 public class Connexion extends JFrame {
 
