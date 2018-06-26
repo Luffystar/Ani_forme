@@ -58,7 +58,7 @@ public class Connexion extends JFrame {
                 	
                 	//sinon on affiche une erreur et on recommence.
             	} catch(Exception e){
-            		
+            		System.err.println(e.getMessage());
             	} // Pour l'instant
             }
         });
