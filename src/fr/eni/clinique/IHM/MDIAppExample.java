@@ -13,6 +13,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.SwingUtilities;
 
+import fr.eni.clinique.DAL.interfaces.impl.PersonnelDAO;
+
 public class MDIAppExample extends JFrame implements ActionListener {
 
    
@@ -22,10 +24,14 @@ public class MDIAppExample extends JFrame implements ActionListener {
 	private JDesktopPane desktopPane;
 	private JMenuBar menuBarre;
 	private JMenu menuAgenda;
-	private static InternalFrame1 frm;
 
 	private static boolean connexionok = false;
 	private InternalFrame1 frm1;
+	private JMenu mnNewMenu;
+	private JMenuItem mntmNewMenuItem;
+	private JMenuItem mntmNewMenuItem_1;
+	private JMenuItem mntmNewMenuItem_2;
+	private JMenuItem mntmAgenda;
 
 
 	public MDIAppExample() {
@@ -42,9 +48,6 @@ public class MDIAppExample extends JFrame implements ActionListener {
 
 		// Barre de menus
 		setJMenuBar(getMenuBarre());
-		
-		//Frame interne exemple		
-		desktopPane.add(getFrm());
 		desktopPane.add(getFrm1());
 
 	}
@@ -61,12 +64,7 @@ public class MDIAppExample extends JFrame implements ActionListener {
 					MDIAppExample ecran = new MDIAppExample();
 					ecran.setVisible(true);
 
-					try {
-						Connexion main = new Connexion();
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+					
 				}
 			});
 		
@@ -74,28 +72,6 @@ public class MDIAppExample extends JFrame implements ActionListener {
 	}
 
 	public void createMenuBar() {
-
-		// Menu Fichier
-		JMenu menu = new JMenu("Fichier");
-		menuBarre.add(menu);
-
-		// Sous menu DÃ©connexion
-		JMenuItem menuItem = new JMenuItem("DÃ©connexion");
-		menuItem.setActionCommand("deconnexion");
-		menuItem.addActionListener(this);
-		menu.add(menuItem);
-
-		// Sous menu fermer
-		menuItem = new JMenuItem("Fermer");
-		menuItem.setActionCommand("fermer");
-		menuItem.addActionListener(this);
-		menu.add(menuItem);
-
-		// Menu Agenda
-		menuItem = new JMenuItem("Ecran");
-		menuBarre.add(menuItem);		
-		menuItem.setActionCommand("ecran");
-		menuItem.addActionListener(this);
 
 	}
 
@@ -128,25 +104,74 @@ public class MDIAppExample extends JFrame implements ActionListener {
 	public JMenuBar getMenuBarre() {
 		if (menuBarre == null) {
 			menuBarre = new JMenuBar();
+					
+							// Menu Fichier
+							JMenu menu = new JMenu("Fichier");
+							menuBarre.add(menu);
+							
+									// Sous menu DÃ©connexion
+									JMenuItem menuItem = new JMenuItem("DÃ©connexion");
+									menuItem.setActionCommand("deconnexion");
+									menuItem.addActionListener(this);
+									menu.add(menuItem);
+									
+											// Sous menu fermer
+											menuItem = new JMenuItem("Fermer");
+											menuItem.setActionCommand("fermer");
+											menuItem.addActionListener(this);
+											menu.add(menuItem);
+					getMenuBarre().add(getMnNewMenu());
+			
+					// Menu Agenda
+					// if Vétérinaire de co
+					//if (){};
+					mntmAgenda = new JMenuItem("Agenda");
+					menuBarre.add(mntmAgenda);		
+					mntmAgenda.setActionCommand("ecran");
+					mntmAgenda.addActionListener(this);
+			getMenuBarre().add(getMntmNewMenuItem_2());
 
 			createMenuBar();
 		}
 		return menuBarre;
 	}
-
-	public static InternalFrame1 getFrm() {
-		if(frm== null){
-			frm = new InternalFrame1();
-			frm.setTitle("Connexion");
-		}
-		return frm;
-	}
 	
 	public InternalFrame1 getFrm1() {
 		if(frm1== null){
 			frm1 = new InternalFrame1();
+			frm1.setTitle("Agenda");
 		}
 		return frm1;
 	}
 
+	private JMenu getMnNewMenu() {
+		//Si Secréataire de co
+		//if() {};
+		if (mnNewMenu == null) {
+			mnNewMenu = new JMenu("Gestion des rendez-vous");
+			mnNewMenu.add(getMntmNewMenuItem());
+			mnNewMenu.add(getMntmNewMenuItem_1());
+		}
+		return mnNewMenu;
+	}
+	private JMenuItem getMntmNewMenuItem() {
+		if (mntmNewMenuItem == null) {
+			mntmNewMenuItem = new JMenuItem("Prise de rendez-vous");
+		}
+		return mntmNewMenuItem;
+	}
+	private JMenuItem getMntmNewMenuItem_1() {
+		if (mntmNewMenuItem_1 == null) {
+			mntmNewMenuItem_1 = new JMenuItem("Gestion des clients");
+		}
+		return mntmNewMenuItem_1;
+	}
+	private JMenuItem getMntmNewMenuItem_2() {
+		//Si Admin de co
+		//if () {};
+		if (mntmNewMenuItem_2 == null) {
+			mntmNewMenuItem_2 = new JMenuItem("Gestion du personnel");
+		}
+		return mntmNewMenuItem_2;
+	}
 }
