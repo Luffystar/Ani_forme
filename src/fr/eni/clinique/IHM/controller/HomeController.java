@@ -3,28 +3,28 @@ package fr.eni.clinique.IHM.controller;
 import fr.eni.clinique.BO.Utilisateur;
 import fr.eni.clinique.IHM.IController;
 import fr.eni.clinique.IHM.observer.IMainFrameObserver;
-import fr.eni.clinique.IHM.views.MainFrame;
+import fr.eni.clinique.IHM.views.HomeFrame;
 
 
 /*
  * @author CHARTIER Corentin
  */
-public class MainFrameController implements IMainFrameObserver, IController {
+public class HomeController implements IMainFrameObserver, IController {
 
     // Attributs
-    private static MainFrameController mainFrameController;
-    private MainFrame mainFrame;
+    private static HomeController mainFrameController;
+    private HomeFrame mainFrame;
     private Utilisateur utilisateur;
 
     // Constructeurs
-    private MainFrameController() {
+    private HomeController() {
 
     }
 
     // Methode
     @Override
     public void initView() {
-        mainFrame = new MainFrame();
+        mainFrame = new HomeFrame();
         mainFrame.setVisible(true);
     }
 
@@ -59,16 +59,16 @@ public class MainFrameController implements IMainFrameObserver, IController {
     }
 
     // Get
-    public static synchronized MainFrameController getInstance() {
+    public static synchronized HomeController getInstance() {
         if (mainFrameController == null) {
-            mainFrameController = new MainFrameController();
+            mainFrameController = new HomeController();
         }
         return mainFrameController;
     }
 
-    public static synchronized MainFrameController getObserver() {
+    public static synchronized HomeController getObserver() {
         if (mainFrameController == null) {
-            mainFrameController = new MainFrameController();
+            mainFrameController = new HomeController();
         }
         return mainFrameController;
     }

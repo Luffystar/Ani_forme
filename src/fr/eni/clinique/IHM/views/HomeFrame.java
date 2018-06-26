@@ -1,6 +1,6 @@
 package fr.eni.clinique.IHM.views;
 
-import fr.eni.clinique.IHM.controller.MainFrameController;
+import fr.eni.clinique.IHM.controller.HomeController;
 import fr.eni.clinique.IHM.observer.IObserverSubject;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,15 +18,15 @@ import javax.swing.event.MenuListener;
  *
  * @author CHARTIER Corentin
  */
-public class MainFrame extends javax.swing.JFrame implements IObserverSubject<IMainFrameObserver> {
+public class HomeFrame extends javax.swing.JFrame implements IObserverSubject<IMainFrameObserver> {
 
     private List<IMainFrameObserver> observers;
 
-    public MainFrame() {
+    public HomeFrame() {
         initComponents();
         this.setLocationRelativeTo(null);
 
-        this.registerObserver(MainFrameController.getObserver());
+        this.registerObserver(HomeController.getObserver());
     }
 
     @SuppressWarnings("unchecked")
@@ -181,20 +181,20 @@ public class MainFrame extends javax.swing.JFrame implements IObserverSubject<IM
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(HomeFrame.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (InstantiationException ex) {
-                    Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(HomeFrame.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (IllegalAccessException ex) {
-                    Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(HomeFrame.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (UnsupportedLookAndFeelException ex) {
-                    Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(HomeFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainFrame().setVisible(true);
+                new HomeFrame().setVisible(true);
             }
         });
     }
