@@ -13,11 +13,13 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import fr.eni.clinique.IHM.MDIAppExample;
+
 
 public class Connexion extends JFrame {
 
-    private JTextField textField;
-    private JTextField textField_1;
+    private JTextField txtNom;
+    private JTextField textMdp;
 
     public Connexion() throws HeadlessException {
         super();
@@ -30,19 +32,34 @@ public class Connexion extends JFrame {
 
         JLabel lblNewLabel = new JLabel("Nom");
 
-        textField = new JTextField();
-        textField.setColumns(10);
+        txtNom = new JTextField();
+        txtNom.setColumns(10);
 
         JLabel lblNewLabel_1 = new JLabel("Mot de passe");
 
-        textField_1 = new JTextField();
-        textField_1.setColumns(10);
+        textMdp = new JTextField();
+        textMdp.setColumns(10);
 
         JButton btnValider = new JButton("Valider");
         btnValider.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
-                System.exit(0); // Pour l'instant
+            	//Ici on test la connection
+            	try {
+            		//Ici on vérifie si : 
+            		//	-le nom Existe (et le fait que ce ne soit pas vide)
+            		//	-et le mot de passe correspondant au nom de l'utilisateur
+            		
+            		// Si c'est ok : 
+            		
+                    setVisible(false);
+                	MDIAppExample mm = new MDIAppExample();
+                	mm.setVisible(true);
+                	
+                	//sinon on affiche une erreur et on recommence.
+            	} catch(Exception e){
+            		
+            	} // Pour l'instant
             }
         });
         GroupLayout groupLayout = new GroupLayout(getContentPane());
@@ -54,12 +71,12 @@ public class Connexion extends JFrame {
                                                 .addGap(84)
                                                 .addComponent(lblNewLabel)
                                                 .addGap(20)
-                                                .addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(txtNom, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                                         .addGroup(groupLayout.createSequentialGroup()
                                                 .addGap(41)
                                                 .addComponent(lblNewLabel_1)
                                                 .addPreferredGap(ComponentPlacement.RELATED)
-                                                .addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(textMdp, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                                         .addGroup(groupLayout.createSequentialGroup()
                                                 .addGap(136)
                                                 .addComponent(btnValider)))
@@ -73,11 +90,11 @@ public class Connexion extends JFrame {
                                         .addGroup(groupLayout.createSequentialGroup()
                                                 .addGap(3)
                                                 .addComponent(lblNewLabel))
-                                        .addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtNom, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                                 .addGap(38)
                                 .addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
                                         .addComponent(lblNewLabel_1)
-                                        .addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(textMdp, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                                 .addGap(38)
                                 .addComponent(btnValider))
         );
