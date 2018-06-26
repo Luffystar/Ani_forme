@@ -1,8 +1,6 @@
-package fr.eni.clinique.IHM.login;
+package fr.eni.clinique.IHM.views;
 
-import java.awt.GridBagConstraints;
 import java.awt.HeadlessException;
-import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.GroupLayout;
@@ -13,15 +11,14 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-import fr.eni.clinique.IHM.MDIAppExample;
 
 
-public class Connexion extends JFrame {
+public class ConnexionFrame extends JFrame {
 
     private JTextField txtNom;
     private JTextField textMdp;
 
-    public Connexion() throws HeadlessException {
+    public ConnexionFrame() throws HeadlessException {
         super();
         setAlwaysOnTop(true);
         this.setResizable(false);

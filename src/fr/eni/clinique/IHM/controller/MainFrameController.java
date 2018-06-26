@@ -24,7 +24,8 @@ public class MainFrameController implements IMainFrameObserver, IController {
     // Methode
     @Override
     public void initView() {
-        
+        mainFrame = new MainFrame();
+        mainFrame.setVisible(true);
     }
 
     @Override
