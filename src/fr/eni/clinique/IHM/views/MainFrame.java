@@ -11,6 +11,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.UnsupportedLookAndFeelException;
 import fr.eni.clinique.IHM.observer.IMainFrameObserver;
+import javax.swing.event.MenuEvent;
+import javax.swing.event.MenuListener;
 
 /**
  *
@@ -94,9 +96,13 @@ public class MainFrame extends javax.swing.JFrame implements IObserverSubject<IM
         BarreMenu.add(Menu_Agenda);
 
         Menu_GestionPersonnel.setText(bundle.getString("MAIN_FRAME_MENU_BAR_GESTION_PERSONNEL")); // NOI18N
-        Menu_GestionPersonnel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Menu_GestionPersonnelActionPerformed(evt);
+        Menu_GestionPersonnel.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                Menu_GestionPersonnelMenuSelected(evt);
             }
         });
         BarreMenu.add(Menu_GestionPersonnel);
@@ -161,11 +167,11 @@ public class MainFrame extends javax.swing.JFrame implements IObserverSubject<IM
         }
     }//GEN-LAST:event_Menu_AgendaActionPerformed
 
-    private void Menu_GestionPersonnelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Menu_GestionPersonnelActionPerformed
-        for (IMainFrameObserver observer : observers) {
+    private void Menu_GestionPersonnelMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_Menu_GestionPersonnelMenuSelected
+         for (IMainFrameObserver observer : observers) {
             observer.MBIGestionPersonnel_Click();
         }
-    }//GEN-LAST:event_Menu_GestionPersonnelActionPerformed
+    }//GEN-LAST:event_Menu_GestionPersonnelMenuSelected
 
     public static void main(String args[]) {
 
