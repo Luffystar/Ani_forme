@@ -1,8 +1,6 @@
 package fr.eni.clinique.APP;
 
 import fr.eni.clinique.BO.Utilisateur;
-import java.util.List;
-
 import fr.eni.clinique.DAL.DAOFactory;
 import fr.eni.clinique.DAL.exceptions.DALException;
 import fr.eni.clinique.DAL.interfaces.IPersonnelDAO;
