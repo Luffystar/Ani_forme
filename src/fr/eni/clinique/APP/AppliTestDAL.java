@@ -18,15 +18,15 @@ public class AppliTestDAL {
             //Déclaration et instanciation de la DAO
             IPersonnelDAO personnelDAO = DAOFactory.getPersonnelDAO();
             int cd = personnelDAO.create(new Utilisateur("Gilbert", "Admin", "SEC", false));
-            
+
             System.out.println(personnelDAO.read(cd));
-            
+
             personnelDAO.update(new Utilisateur(cd, "Michel", "Admin", "SEC", false));
             personnelDAO.delete(new Utilisateur(cd, "Michel", "Admin", "SEC", false));
-            
             
         } catch (DALException ex) {
             Logger.getLogger(AppliTestDAL.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
 }

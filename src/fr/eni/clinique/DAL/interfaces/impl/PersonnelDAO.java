@@ -2,6 +2,7 @@ package fr.eni.clinique.DAL.interfaces.impl;
 
 import fr.eni.clinique.BO.Utilisateur;
 import fr.eni.clinique.DAL.exceptions.DALException;
+import fr.eni.clinique.DAL.exceptions.DALException;
 import fr.eni.clinique.DAL.interfaces.IPersonnelDAO;
 import fr.eni.clinique.DAL.utils.JdbcTools;
 import java.sql.PreparedStatement;
@@ -118,7 +119,7 @@ public class PersonnelDAO implements IPersonnelDAO {
                         .append("' ");
                 virgule = ", ";
             }
-            if (utilisateur.getMotPasse()!= null) {
+            if (utilisateur.getMotPasse() != null) {
                 sb.append(virgule)
                         .append("MotPasse = '")
                         .append(utilisateur.getMotPasse())
@@ -142,7 +143,7 @@ public class PersonnelDAO implements IPersonnelDAO {
             sb.append("WHERE CodePers = ").append(utilisateur.getCodePers());
 
             System.out.println(sb.toString());
-            
+
             statement.executeUpdate(sb.toString());
 
         } catch (Exception ex) {
@@ -173,6 +174,47 @@ public class PersonnelDAO implements IPersonnelDAO {
             statement.setInt(1, utilisateur.getCodePers());
 
             result = statement.executeUpdate();
+
+        } catch (Exception ex) {
+            throw new DALException(ex.getMessage());
+
+        } finally {
+
+            try {
+                jdbcTools.closeConnection();
+            } catch (Exception ex) {
+                Logger.getLogger(PersonnelDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        return result;
+    }
+
+    @Override
+    public Utilisateur readByUsernameAndPassword(String username, String password) throws DALException {
+        Utilisateur result = null;
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("SELECT * FROM Personnels WHERE ")
+                .append("Nom = ? AND MotPasse = ?");
+
+        try (PreparedStatement statement = jdbcTools.getConnection().prepareStatement(sb.toString());) {
+
+            statement.setString(1, username);
+            statement.setString(2, password);
+
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+
+                result = new Utilisateur(
+                        rs.getInt("CodePers"),
+                        rs.getString("Nom"),
+                        rs.getString("MotPasse"),
+                        rs.getString("Role"),
+                        rs.getBoolean("Archive")
+                );
+            }
 
         } catch (Exception ex) {
             throw new DALException(ex.getMessage());

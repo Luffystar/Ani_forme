@@ -72,9 +72,24 @@ public class PersonnelDAOTest {
         fail("Expected NumberFormatException");
 
     }
+    
+    @Test
+    public void test_5_ReadByUsernameAndPassword_Succes() throws Exception {
+        Utilisateur expResult = new Utilisateur(ID, "Gilbert", "Admin", "SEC", false);
+        Utilisateur result = personnelDAO.readByUsernameAndPassword("Gilbert", "Admin");
+        assertEquals(expResult, result);
+
+    }
+
+    @Test(expected = AssertionError.class)
+    public void test_6_ReadByUsernameAndPassword_Fail() throws DALException {
+        personnelDAO.readByUsernameAndPassword("Gilbert", "trucmuche");
+        fail("Expected NumberFormatException");
+
+    }
 
     @Test
-    public void test_5_Update_Succes() throws Exception {
+    public void test_7_Update_Succes() throws Exception {
         int expResult = 0;
         int result = personnelDAO.update(new Utilisateur(ID, "Michel", "Admin", "SEC", false));
         assertEquals(expResult, result);
@@ -82,14 +97,14 @@ public class PersonnelDAOTest {
     }
 
     @Test(expected = AssertionError.class)
-    public void test_6_Update_Fail() throws DALException {
+    public void test_8_Update_Fail() throws DALException {
         personnelDAO.update(new Utilisateur(785698, "Michel", "Admin", "SEC", false));
         fail("Expected NumberFormatException");
 
     }
 
     @Test
-    public void test_7_Delete_Succes() throws Exception {
+    public void test_9_Delete_Succes() throws Exception {
         Utilisateur utilisateur = new Utilisateur(ID, "Michel", "Admin", "SEC", false);
         int expResult = 1;
         int result = personnelDAO.delete(utilisateur);
@@ -97,7 +112,7 @@ public class PersonnelDAOTest {
     }
 
     @Test(expected = AssertionError.class)
-    public void test_8_Delete_Fail() throws DALException {
+    public void test_10_Delete_Fail() throws DALException {
         Utilisateur utilisateur = new Utilisateur(123654778, "Michel", "Admin", "SEC", false);
         personnelDAO.delete(utilisateur);
         fail("Expected NumberFormatException");
