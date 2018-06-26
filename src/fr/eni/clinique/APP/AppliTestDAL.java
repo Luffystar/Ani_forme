@@ -9,6 +9,9 @@ import fr.eni.clinique.DAL.interfaces.IPersonnelDAO;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/*
+ * @author CHARTIER Corentin
+ */
 public class AppliTestDAL {
 
     public static void main(String[] args) {

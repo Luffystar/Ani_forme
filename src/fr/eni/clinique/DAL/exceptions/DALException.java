@@ -1,5 +1,8 @@
 package fr.eni.clinique.DAL.exceptions;
 
+/*
+ * @author CHARTIER Corentin
+ */
 public class DALException extends Exception {
 
     // Constructor

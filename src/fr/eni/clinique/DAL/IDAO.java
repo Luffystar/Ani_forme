@@ -2,6 +2,9 @@ package fr.eni.clinique.DAL;
 
 import fr.eni.clinique.DAL.exceptions.DALException;
 
+/*
+ * @author CHARTIER Corentin
+ */
 public interface IDAO<T> {
 
     //CRUD
