@@ -48,14 +48,14 @@ public class PersonnelDAO implements IPersonnelDAO {
                 }
             }
 
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             throw new DALException(ex.getMessage());
 
         } finally {
 
             try {
                 jdbcTools.closeConnection();
-            } catch (SQLException ex) {
+            } catch (Exception ex) {
                 Logger.getLogger(PersonnelDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -89,14 +89,14 @@ public class PersonnelDAO implements IPersonnelDAO {
                 );
             }
 
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             throw new DALException(ex.getMessage());
 
         } finally {
 
             try {
                 jdbcTools.closeConnection();
-            } catch (SQLException ex) {
+            } catch (Exception ex) {
                 Logger.getLogger(PersonnelDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -146,14 +146,14 @@ public class PersonnelDAO implements IPersonnelDAO {
             
             statement.executeUpdate(sb.toString());
 
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             throw new DALException(ex.getMessage());
 
         } finally {
 
             try {
                 jdbcTools.closeConnection();
-            } catch (SQLException ex) {
+            } catch (Exception ex) {
                 Logger.getLogger(PersonnelDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -175,14 +175,14 @@ public class PersonnelDAO implements IPersonnelDAO {
 
             result = statement.executeUpdate();
 
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             throw new DALException(ex.getMessage());
 
         } finally {
 
             try {
                 jdbcTools.closeConnection();
-            } catch (SQLException ex) {
+            } catch (Exception ex) {
                 Logger.getLogger(PersonnelDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }

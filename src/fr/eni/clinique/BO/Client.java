@@ -1,5 +1,7 @@
 package fr.eni.clinique.BO;
 
+import java.util.Objects;
+
 /*
  * @author CHARTIER Corentin
  */
@@ -50,7 +52,75 @@ public class Client {
     }
 
     // Methode
-    
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 83 * hash + this.CodeClient;
+        hash = 83 * hash + Objects.hashCode(this.NomClient);
+        hash = 83 * hash + Objects.hashCode(this.PrenomClient);
+        hash = 83 * hash + Objects.hashCode(this.Adresse1);
+        hash = 83 * hash + Objects.hashCode(this.Adresse2);
+        hash = 83 * hash + Objects.hashCode(this.CodePostal);
+        hash = 83 * hash + Objects.hashCode(this.Ville);
+        hash = 83 * hash + Objects.hashCode(this.NumTel);
+        hash = 83 * hash + Objects.hashCode(this.Assurance);
+        hash = 83 * hash + Objects.hashCode(this.Email);
+        hash = 83 * hash + Objects.hashCode(this.Remarque);
+        hash = 83 * hash + Objects.hashCode(this.Archive);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Client other = (Client) obj;
+        if (this.CodeClient != other.CodeClient) {
+            return false;
+        }
+        if (!Objects.equals(this.NomClient, other.NomClient)) {
+            return false;
+        }
+        if (!Objects.equals(this.PrenomClient, other.PrenomClient)) {
+            return false;
+        }
+        if (!Objects.equals(this.Adresse1, other.Adresse1)) {
+            return false;
+        }
+        if (!Objects.equals(this.Adresse2, other.Adresse2)) {
+            return false;
+        }
+        if (!Objects.equals(this.CodePostal, other.CodePostal)) {
+            return false;
+        }
+        if (!Objects.equals(this.Ville, other.Ville)) {
+            return false;
+        }
+        if (!Objects.equals(this.NumTel, other.NumTel)) {
+            return false;
+        }
+        if (!Objects.equals(this.Assurance, other.Assurance)) {
+            return false;
+        }
+        if (!Objects.equals(this.Email, other.Email)) {
+            return false;
+        }
+        if (!Objects.equals(this.Remarque, other.Remarque)) {
+            return false;
+        }
+        if (!Objects.equals(this.Archive, other.Archive)) {
+            return false;
+        }
+        return true;
+    }
+
     // Get
     public int getCodeClient() {
         return CodeClient;
