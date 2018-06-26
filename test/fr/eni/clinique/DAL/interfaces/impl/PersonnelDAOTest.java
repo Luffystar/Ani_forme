@@ -4,16 +4,13 @@ import fr.eni.clinique.BO.Utilisateur;
 import fr.eni.clinique.DAL.DAOFactory;
 import fr.eni.clinique.DAL.exceptions.DALException;
 import fr.eni.clinique.DAL.interfaces.IPersonnelDAO;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
 import org.junit.FixMethodOrder;
+import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 /**
