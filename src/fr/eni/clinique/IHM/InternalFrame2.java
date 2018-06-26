@@ -14,13 +14,15 @@ import javax.swing.table.DefaultTableModel;
 
 public class InternalFrame2 extends JInternalFrame{
 	
+	private JTable table;
+
 	public InternalFrame2() {
         //Ecran avec un titre, redimensionable, fermable, agrandissable, iconifiable
         super("Titre Frame 2", true, true, true, true);
 
         this.setDefaultCloseOperation(HIDE_ON_CLOSE);
         setBounds(120, 120, 400, 400);
-        /*JPanel panel = new JPanel();
+        JPanel panel = new JPanel();
 		
 		JButton btnNewButton = new JButton("Ajout");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -36,7 +38,7 @@ public class InternalFrame2 extends JInternalFrame{
 		panel.add(btnNewButton_2);
 		
 		JPanel panel_1 = new JPanel();
-		GroupLayout groupLayout = new GroupLayout(internalFrame.getContentPane());
+		GroupLayout groupLayout = new GroupLayout(this.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
@@ -77,8 +79,8 @@ public class InternalFrame2 extends JInternalFrame{
 			}
 		));
 		panel_1.add(table);
-		internalFrame.getContentPane().setLayout(groupLayout);
-*/
+		this.getContentPane().setLayout(groupLayout);
+
 
     }
 }
