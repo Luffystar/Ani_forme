@@ -1,6 +1,5 @@
 package fr.eni.clinique.IHM;
 
-import fr.eni.clinique.IHM.login.Connexion;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.Window;
@@ -13,7 +12,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.SwingUtilities;
 
-import fr.eni.clinique.DAL.interfaces.impl.PersonnelDAO;
 
 public class MDIAppExample extends JFrame implements ActionListener {
 
@@ -26,7 +24,6 @@ public class MDIAppExample extends JFrame implements ActionListener {
 	private JMenu menuAgenda;
 
 	private static boolean connexionok = false;
-	private InternalFrame1 frm1;
 	private JMenu mnNewMenu;
 	private JMenuItem mntmNewMenuItem;
 	private JMenuItem mntmNewMenuItem_1;
@@ -48,7 +45,6 @@ public class MDIAppExample extends JFrame implements ActionListener {
 
 		// Barre de menus
 		setJMenuBar(getMenuBarre());
-		desktopPane.add(getFrm1());
 
 	}
 
@@ -88,7 +84,6 @@ public class MDIAppExample extends JFrame implements ActionListener {
 
 		case "ecran":
 			System.out.println("coucou");
-			getFrm1().setVisible(true);
 			break;
 
 		default:
@@ -123,7 +118,7 @@ public class MDIAppExample extends JFrame implements ActionListener {
 					getMenuBarre().add(getMnNewMenu());
 			
 					// Menu Agenda
-					// if Vétérinaire de co
+					// if Vï¿½tï¿½rinaire de co
 					//if (){};
 					mntmAgenda = new JMenuItem("Agenda");
 					menuBarre.add(mntmAgenda);		
@@ -135,17 +130,9 @@ public class MDIAppExample extends JFrame implements ActionListener {
 		}
 		return menuBarre;
 	}
-	
-	public InternalFrame1 getFrm1() {
-		if(frm1== null){
-			frm1 = new InternalFrame1();
-			frm1.setTitle("Agenda");
-		}
-		return frm1;
-	}
 
 	private JMenu getMnNewMenu() {
-		//Si Secréataire de co
+		//Si Secrï¿½ataire de co
 		//if() {};
 		if (mnNewMenu == null) {
 			mnNewMenu = new JMenu("Gestion des rendez-vous");

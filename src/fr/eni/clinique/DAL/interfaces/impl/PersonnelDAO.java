@@ -35,9 +35,9 @@ public class PersonnelDAO implements IPersonnelDAO {
 
         try (PreparedStatement statement = jdbcTools.getConnection().prepareStatement(sb.toString(), Statement.RETURN_GENERATED_KEYS);) {
 
-            statement.setString(1, utilisateur.getNom());
+            statement.setString(1, utilisateur.getNom().toUpperCase());
             statement.setString(2, utilisateur.getMotPasse());
-            statement.setString(3, utilisateur.getRole());
+            statement.setString(3, utilisateur.getRole().toUpperCase());
             statement.setBoolean(4, utilisateur.getArchive());
 
             if (statement.executeUpdate() == 1) {
