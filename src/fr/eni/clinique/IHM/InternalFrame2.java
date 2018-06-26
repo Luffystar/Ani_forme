@@ -12,13 +12,13 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.table.DefaultTableModel;
 
-public class InternalFrame2 extends JInternalFrame{
+public class InternalFrame2 extends JInternalFrame{ //Gestion du personnel
 	
 	private JTable table;
 
 	public InternalFrame2() {
         //Ecran avec un titre, redimensionable, fermable, agrandissable, iconifiable
-        super("Titre Frame 2", true, true, true, true);
+        super("Gestion du Personnel", true, true, true, true);
 
         this.setDefaultCloseOperation(HIDE_ON_CLOSE);
         setBounds(120, 120, 400, 400);

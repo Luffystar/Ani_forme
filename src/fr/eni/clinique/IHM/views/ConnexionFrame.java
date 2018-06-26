@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import fr.eni.clinique.BLL.AuthentificationService;
+
 
 
 public class ConnexionFrame extends JFrame {
@@ -48,7 +50,7 @@ public class ConnexionFrame extends JFrame {
             		//	-et le mot de passe correspondant au nom de l'utilisateur
             		
             		// Si c'est ok : 
-            		
+            		//AuthentificationService.connection(txtNom.toString(), textMdp.toString());
                     setVisible(false);
                 	
                 	//sinon on affiche une erreur et on recommence.
