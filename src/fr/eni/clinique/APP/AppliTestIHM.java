@@ -1,16 +1,17 @@
 package fr.eni.clinique.APP;
 
-import fr.eni.clinique.IHM.views.ConnexionFrame;
+import fr.eni.clinique.IHM.controller.HomeController;
 
 public class AppliTestIHM {
-	
-	public static void main (String[] args) throws Exception{
 
-		try {
-			ConnexionFrame main = new ConnexionFrame();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+    public static void main(String[] args) throws Exception {
+
+        try {
+            HomeController homeController = HomeController.getInstance();
+            homeController.initView();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

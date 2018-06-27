@@ -1,31 +1,35 @@
 package fr.eni.clinique.IHM.controller;
 
 import fr.eni.clinique.BO.Utilisateur;
-import fr.eni.clinique.IHM.IController;
-import fr.eni.clinique.IHM.observer.IMainFrameObserver;
+import fr.eni.clinique.IHM.observer.IHomeObserver;
 import fr.eni.clinique.IHM.views.HomeFrame;
-
+import javax.swing.JFrame;
 
 /*
  * @author CHARTIER Corentin
  */
-public class HomeController implements IMainFrameObserver, IController {
+public class HomeController implements IHomeObserver {
 
     // Attributs
-    private static HomeController mainFrameController;
+    private static HomeController homeController;
+    private ConnexionController connexionController;
     private HomeFrame mainFrame;
+    
     private Utilisateur utilisateur;
 
     // Constructeurs
     private HomeController() {
+        connexionController = ConnexionController.getInstance();
 
     }
 
     // Methode
-    @Override
     public void initView() {
         mainFrame = new HomeFrame();
         mainFrame.setVisible(true);
+        
+        connexionController.initView(mainFrame, "Test", true);
+        
     }
 
     @Override
@@ -60,17 +64,17 @@ public class HomeController implements IMainFrameObserver, IController {
 
     // Get
     public static synchronized HomeController getInstance() {
-        if (mainFrameController == null) {
-            mainFrameController = new HomeController();
+        if (homeController == null) {
+            homeController = new HomeController();
         }
-        return mainFrameController;
+        return homeController;
     }
 
     public static synchronized HomeController getObserver() {
-        if (mainFrameController == null) {
-            mainFrameController = new HomeController();
+        if (homeController == null) {
+            homeController = new HomeController();
         }
-        return mainFrameController;
+        return homeController;
     }
     // Set
 }

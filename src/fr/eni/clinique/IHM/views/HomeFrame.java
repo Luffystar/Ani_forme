@@ -1,6 +1,7 @@
 package fr.eni.clinique.IHM.views;
 
 import fr.eni.clinique.IHM.controller.HomeController;
+import fr.eni.clinique.IHM.observer.IHomeObserver;
 import fr.eni.clinique.IHM.observer.IObserverSubject;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,17 +11,14 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.UnsupportedLookAndFeelException;
-import fr.eni.clinique.IHM.observer.IMainFrameObserver;
-import javax.swing.event.MenuEvent;
-import javax.swing.event.MenuListener;
 
 /**
  *
  * @author CHARTIER Corentin
  */
-public class HomeFrame extends javax.swing.JFrame implements IObserverSubject<IMainFrameObserver> {
+public class HomeFrame extends javax.swing.JFrame implements IObserverSubject<IHomeObserver> {
 
-    private List<IMainFrameObserver> observers;
+    private List<IHomeObserver> observers;
 
     public HomeFrame() {
         initComponents();
@@ -124,7 +122,7 @@ public class HomeFrame extends javax.swing.JFrame implements IObserverSubject<IM
     }// </editor-fold>//GEN-END:initComponents
 
     @Override
-    public synchronized void registerObserver(IMainFrameObserver observer) {
+    public synchronized void registerObserver(IHomeObserver observer) {
         if (observers == null) {
             observers = new ArrayList<>();
         }
@@ -133,42 +131,42 @@ public class HomeFrame extends javax.swing.JFrame implements IObserverSubject<IM
     }
 
     @Override
-    public synchronized void unregisterObserver(IMainFrameObserver observer) {
+    public synchronized void unregisterObserver(IHomeObserver observer) {
         observers.remove(observer);
     }
 
     private void MBI_DeconnexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MBI_DeconnexionActionPerformed
-        for (IMainFrameObserver observer : observers) {
+        for (IHomeObserver observer : observers) {
             observer.MBIDeconnexion_Click();
         }
     }//GEN-LAST:event_MBI_DeconnexionActionPerformed
 
     private void MBI_FermerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MBI_FermerActionPerformed
-        for (IMainFrameObserver observer : observers) {
+        for (IHomeObserver observer : observers) {
             observer.MBIFermer_Click();
         }
     }//GEN-LAST:event_MBI_FermerActionPerformed
 
     private void MBI_PriseRDVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MBI_PriseRDVActionPerformed
-        for (IMainFrameObserver observer : observers) {
+        for (IHomeObserver observer : observers) {
             observer.MBIPriseRDV_Click();
         }
     }//GEN-LAST:event_MBI_PriseRDVActionPerformed
 
     private void MBI_GestionClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MBI_GestionClientActionPerformed
-        for (IMainFrameObserver observer : observers) {
+        for (IHomeObserver observer : observers) {
             observer.MBIGestionClient_Click();
         }
     }//GEN-LAST:event_MBI_GestionClientActionPerformed
 
     private void Menu_AgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Menu_AgendaActionPerformed
-        for (IMainFrameObserver observer : observers) {
+        for (IHomeObserver observer : observers) {
             observer.MBIAgenda_Click();
         }
     }//GEN-LAST:event_Menu_AgendaActionPerformed
 
     private void Menu_GestionPersonnelMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_Menu_GestionPersonnelMenuSelected
-         for (IMainFrameObserver observer : observers) {
+         for (IHomeObserver observer : observers) {
             observer.MBIGestionPersonnel_Click();
         }
     }//GEN-LAST:event_Menu_GestionPersonnelMenuSelected

@@ -1,6 +1,6 @@
 package fr.eni.clinique.IHM.observer;
 
-public interface IMainFrameObserver {
+public interface IHomeObserver {
 
     void MBIDeconnexion_Click();
 

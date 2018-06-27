@@ -1,64 +1,65 @@
 package fr.eni.clinique.IHM.views;
 
-import java.awt.HeadlessException;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import fr.eni.clinique.IHM.controller.ConnexionController;
+import fr.eni.clinique.IHM.observer.IConnexionObserver;
+import fr.eni.clinique.IHM.observer.IObserverSubject;
+import java.awt.Dialog;
+import java.awt.Frame;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-import fr.eni.clinique.BLL.AuthentificationService;
+/*
+ * @author POUSSIN Axel & CHARTIER Corentin
+ */
+public class ConnexionFrame extends JDialog implements IObserverSubject<IConnexionObserver> {
 
-
-
-public class ConnexionFrame extends JFrame {
-
+    private ResourceBundle bundle = ResourceBundle.getBundle("fr/eni/clinique/texte_ressources"); // NOI18N
+    private List<IConnexionObserver> observers;
+    private JLabel lblNewLabel_1;
+    private JLabel lblNewLabel;
     private JTextField txtNom;
     private JTextField textMdp;
+    private JButton btnValider;
 
-    public ConnexionFrame() throws HeadlessException {
-        super();
+    public ConnexionFrame(Frame owner, String title, boolean modal) {
+        super(owner, title, modal);
+        initComponents();
+        this.registerObserver(ConnexionController.getObserver());
+    }
+
+       
+    private void initComponents() {
+
         setAlwaysOnTop(true);
         this.setResizable(false);
-        this.setTitle("Connexion");
+        this.setTitle(bundle.getString("TITRE_CONNEXION_FRAME"));
         this.setLocationRelativeTo(null);
-        this.setVisible(true);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JLabel lblNewLabel = new JLabel("Nom");
-
+        lblNewLabel = new JLabel(bundle.getString("CONNEXION_FRAME_LABEL_LOGIN"));
         txtNom = new JTextField();
         txtNom.setColumns(10);
 
-        JLabel lblNewLabel_1 = new JLabel("Mot de passe");
-
-        textMdp = new JTextField();
+        lblNewLabel_1 = new JLabel(bundle.getString("CONNEXION_FRAME_LABEL_PASSWORD"));
+        textMdp = new JPasswordField();
         textMdp.setColumns(10);
 
-        JButton btnValider = new JButton("Valider");
-        btnValider.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent arg0) {
-            	//Ici on test la connection
-            	try {
-            		//Ici on v�rifie si : 
-            		//	-le nom Existe (et le fait que ce ne soit pas vide)
-            		//	-et le mot de passe correspondant au nom de l'utilisateur
-            		
-            		// Si c'est ok : 
-            		//AuthentificationService.connection(txtNom.toString(), textMdp.toString());
-                    setVisible(false);
-                	
-                	//sinon on affiche une erreur et on recommence.
-            	} catch(Exception e){
-            		System.err.println(e.getMessage());
-            	} // Pour l'instant
+        btnValider = new JButton(bundle.getString("CONNEXION_FRAME_BOUTON_VALIDER"));
+        btnValider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_ValiderActionPerformed(evt);
             }
         });
+
         GroupLayout groupLayout = new GroupLayout(getContentPane());
         groupLayout.setHorizontalGroup(
                 groupLayout.createParallelGroup(Alignment.LEADING)
@@ -98,4 +99,33 @@ public class ConnexionFrame extends JFrame {
         getContentPane().setLayout(groupLayout);
         this.setSize(300, 300);
     }
+
+    @Override
+    public synchronized void registerObserver(IConnexionObserver observer) {
+        if (observers == null) {
+            observers = new ArrayList<>();
+        }
+
+        observers.add(observer);
+    }
+
+    @Override
+    public synchronized void unregisterObserver(IConnexionObserver observer) {
+        observers.remove(observer);
+    }
+
+    private void BTN_ValiderActionPerformed(java.awt.event.ActionEvent evt) {
+        for (IConnexionObserver observer : observers) {
+            observer.BTNValider_Click();
+        }
+    }
+
+    public JTextField getTxtNom() {
+        return txtNom;
+    }
+
+    public JTextField getTextMdp() {
+        return textMdp;
+    }
+
 }
