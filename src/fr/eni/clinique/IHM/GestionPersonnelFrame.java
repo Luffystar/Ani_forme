@@ -11,6 +11,9 @@ import javax.swing.JTable;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.table.DefaultTableModel;
 
+import fr.eni.clinique.BO.Utilisateur;
+import fr.eni.clinique.DAL.IDAO;
+
 public class GestionPersonnelFrame extends JInternalFrame{ //Gestion du personnel
 	
 	private JTable table;
@@ -77,11 +80,15 @@ public class GestionPersonnelFrame extends JInternalFrame{ //Gestion du personne
 				"Nom Pr\u00E9nom", "Fonction", "Password"
 			}
 		));
-		/*
+		//Perdu
+		
+		
+		/*IDAO<Utilisateur> user;
+		
 		for (int j = 1; j >= table.getRowHeight(); j++){
 			for (int i = 1; i >= table.getHeight() ; i++){
-				IDAO<T> user = IDAO.read(i);
-				table[i][j] = {user.getNom() ,user.getRole(),user.getMotPasse()};
+				user.read(i);
+				table.setEditingColumn(j) = user.getNom() ,user.getRole(),user.getMotPasse();
 			}
 		}*/
 		panel_1.add(table);
