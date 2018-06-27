@@ -11,11 +11,11 @@ import javax.swing.JTable;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.table.DefaultTableModel;
 
-public class InternalFrame2 extends JInternalFrame{ //Gestion du personnel
+public class GestionPersonnelFrame extends JInternalFrame{ //Gestion du personnel
 	
 	private JTable table;
 
-	public InternalFrame2() {
+	public GestionPersonnelFrame() {
         //Ecran avec un titre, redimensionable, fermable, agrandissable, iconifiable
         super("Gestion du Personnel", true, true, true, true);
 
