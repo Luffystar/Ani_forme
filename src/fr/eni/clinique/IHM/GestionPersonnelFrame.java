@@ -77,6 +77,13 @@ public class GestionPersonnelFrame extends JInternalFrame{ //Gestion du personne
 				"Nom Pr\u00E9nom", "Fonction", "Password"
 			}
 		));
+		/*
+		for (int j = 1; j >= table.getRowHeight(); j++){
+			for (int i = 1; i >= table.getHeight() ; i++){
+				IDAO<T> user = IDAO.read(i);
+				table[i][j] = {user.getNom() ,user.getRole(),user.getMotPasse()};
+			}
+		}*/
 		panel_1.add(table);
 		this.getContentPane().setLayout(groupLayout);
 
